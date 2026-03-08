@@ -1,0 +1,252 @@
+[
+  {
+    "question": "How does etafenone affect regional myocardial blood flow in dogs?",
+    "top_rerank_score": 8.66192626953125,
+    "relevant_passage_ids": [
+      "pubmed_5",
+      "pubmed_218811"
+    ],
+    "answers": [
+      "Effect of etafenone on total and regional myocardial blood flow."
+    ]
+  },
+  {
+    "question": "What is the antipeptic effect of alpha-bisabolol on pepsin activity?",
+    "top_rerank_score": 7.719104766845703,
+    "relevant_passage_ids": [
+      "pubmed_0"
+    ],
+    "answers": [
+      "Biochemical studies on camomile components/III"
+    ]
+  },
+  {
+    "question": "How does dimenhydrinate affect spontaneous nystagmus in acute vestibular disease?",
+    "top_rerank_score": 7.204656600952148,
+    "relevant_passage_ids": [
+      "pubmed_116376",
+      "pubmed_116375",
+      "pubmed_116374"
+    ],
+    "answers": [
+      "Since by acute vestibular disease the intensity of spontaneous nystagmus is generally closely related to the severity of vertigo, the influence on a pathological spontaneous nystagmus by antivertiginosa seems to be a dependable criterium in the evaluation of their effectiveness"
+    ]
+  },
+  {
+    "question": "What experimental results are reported for myocardial blood flow distribution in dogs?",
+    "top_rerank_score": 6.605923652648926,
+    "relevant_passage_ids": [
+      "pubmed_116223",
+      "pubmed_248010",
+      "pubmed_26755",
+      "pubmed_225419"
+    ],
+    "answers": [
+      "Experimental measurement of microcirculation in myocardial infarction by using radioactive microspheres."
+    ]
+  },
+  {
+    "question": "What are the tumor-inhibiting and immunostimulating effects of BA 1 N-(2-cyanoethylene)-urea in DS carcinosarcoma rats?",
+    "top_rerank_score": 6.524076461791992,
+    "relevant_passage_ids": [
+      "pubmed_1",
+      "pubmed_221138"
+    ],
+    "answers": [
+      "Demonstration of tumor inhibiting properties of a strongly immunostimulating low-molecular weight substance"
+    ]
+  },
+  {
+    "question": "What studies report urinary lipoprotein changes in nephrotic syndrome models?",
+    "top_rerank_score": 5.678153991699219,
+    "relevant_passage_ids": [
+      "pubmed_162735",
+      "pubmed_171528",
+      "pubmed_162737",
+      "pubmed_191321",
+      "pubmed_170319"
+    ],
+    "answers": [
+      "High density lipoproteinuria in nephrotic syndrome."
+    ]
+  },
+  {
+    "question": "What findings are reported on lipid metabolism abnormalities in nephrotic syndrome?",
+    "top_rerank_score": 5.342842102050781,
+    "relevant_passage_ids": [
+      "pubmed_150766"
+    ],
+    "answers": [
+      "These findings indicate that abnormalities in lipoprotein metabolism in renal failure patients are not appreciably affected by chronic dialysis treatment and continue following successful transplantation"
+    ]
+  },
+  {
+    "question": "What changes in urinary lipoproteins occur in rat nephrotic syndrome?",
+    "top_rerank_score": 5.280600070953369,
+    "relevant_passage_ids": [
+      "pubmed_191321",
+      "pubmed_162737",
+      "pubmed_162735",
+      "pubmed_162738"
+    ],
+    "answers": [
+      "Lipoprotein lipase activator deficiency in very low density lipoproteins in rat nephrotic syndrome."
+    ]
+  },
+  {
+    "question": "What studies discuss changes in pepsin activity or antipeptic effects?",
+    "top_rerank_score": 4.766024589538574,
+    "relevant_passage_ids": [
+      "pubmed_0",
+      "pubmed_9764"
+    ],
+    "answers": [
+      "Biochemical studies on camomile components/III"
+    ]
+  },
+  {
+    "question": "What are reported effects of alpha-bisabolol in biomedical studies?",
+    "top_rerank_score": 4.437499523162842,
+    "relevant_passage_ids": [
+      "pubmed_0"
+    ],
+    "answers": [
+      "Biochemical studies on camomile components/III"
+    ]
+  },
+  {
+    "question": "What evidence is reported on anti-inflammatory effects of natural compounds in animal models?",
+    "top_rerank_score": 2.9153788089752197,
+    "relevant_passage_ids": [
+      "pubmed_19715"
+    ],
+    "answers": [
+      "The weak prostaglandin synthetase inhibiting properties of this compound differentiate it from other acid anti-inflammatory compounds"
+    ]
+  },
+  {
+    "question": "What pharmacological agents are reported to reduce gastric mucosal injury?",
+    "top_rerank_score": 2.3945138454437256,
+    "relevant_passage_ids": [
+      "pubmed_210124"
+    ],
+    "answers": [
+      "The introduction of the heat-stable enterotoxin of Escherichia coli into pig jejunal segments also gave lowered mucosal cAMP concentrations"
+    ]
+  },
+  {
+    "question": "What cardiovascular effects are reported for pharmacologic receptor blockade?",
+    "top_rerank_score": 1.917328119277954,
+    "relevant_passage_ids": [
+      "pubmed_26099",
+      "pubmed_26101",
+      "pubmed_9154"
+    ],
+    "answers": [
+      "Cardiovascular effects of local adrenaline infiltration during halothane anaesthesia and adrenergic beta-receptor blockade in man."
+    ]
+  },
+  {
+    "question": "What immunological effects are described for antitumor compounds in preclinical rat models?",
+    "top_rerank_score": 1.7021191120147705,
+    "relevant_passage_ids": [
+      "pubmed_67457",
+      "pubmed_136800"
+    ],
+    "answers": [
+      "Target cell - substratum interaction"
+    ]
+  },
+  {
+    "question": "What findings are reported about BA 1 in tumor-bearing rat models?",
+    "top_rerank_score": 1.3522863388061523,
+    "relevant_passage_ids": [
+      "pubmed_196876",
+      "pubmed_181990"
+    ],
+    "answers": [
+      "Liver membranes prepared from these rats showed a decrease in insulin binding and receptor affinity similar to that observed in other states of glucocorticoid excess"
+    ]
+  },
+  {
+    "question": "What therapeutic effects are reported for receptor-blocking drugs on cardiovascular outcomes?",
+    "top_rerank_score": 1.342801570892334,
+    "relevant_passage_ids": [
+      "pubmed_17022",
+      "pubmed_30998"
+    ],
+    "answers": [
+      "Pharmacokinetics of beta-receptor-blocking agents in relation to their anti-hypertensive effect."
+    ]
+  },
+  {
+    "question": "What are common causes and mechanisms of gastric lesions in biomedical studies?",
+    "top_rerank_score": 0.258736789226532,
+    "relevant_passage_ids": [
+      "pubmed_9524"
+    ],
+    "answers": [
+      "Mechanism of prevention of aspirin-induced gastric lesions by bile duct legation in the rat."
+    ]
+  },
+  {
+    "question": "What evidence exists on treatments affecting gastric lesions or gastric protection?",
+    "top_rerank_score": -0.9120485782623291,
+    "relevant_passage_ids": [
+      "pubmed_9804"
+    ],
+    "answers": [
+      "Role of the parietal cell in gastric damage induced by aspirin and related drugs: implications for safer therapy."
+    ]
+  },
+  {
+    "question": "What biomedical literature reports mechanisms of drug-induced protection against tissue injury?",
+    "top_rerank_score": -1.412238597869873,
+    "relevant_passage_ids": [
+      "pubmed_89828"
+    ],
+    "answers": [
+      "Drug-induced pulmonary disease."
+    ]
+  },
+  {
+    "question": "What studies report efficacy and safety trade-offs of experimental cancer therapeutics?",
+    "top_rerank_score": -4.094785213470459,
+    "relevant_passage_ids": [
+      "pubmed_34245"
+    ],
+    "answers": [
+      "If none receive preventive therapy prelaunch, at least a large minority will pose two problems--treatment for acute motion sickness and rapid acquisition of adaptation"
+    ]
+  },
+  {
+    "question": "What studies describe neurodegenerative disease mechanisms such as Parkinsonian syndromes?",
+    "top_rerank_score": -5.287445068359375,
+    "relevant_passage_ids": [
+      "pubmed_238506"
+    ],
+    "answers": [
+      "It also shows spontaneous stepping on a treadmill which is known to be produced by a spinal stepping generator, but can be modified in interesting ways by sensory perturbations"
+    ]
+  },
+  {
+    "question": "What biomedical studies report immunostimulation and recovery outcomes in rats?",
+    "top_rerank_score": -8.798853874206543,
+    "relevant_passage_ids": [
+      "pubmed_187250"
+    ],
+    "answers": [
+      "Biomedical survey in Irian Jaya (West Irian), Indonesia."
+    ]
+  },
+  {
+    "question": "What biomarkers and biochemical pathways are associated with peptic activity and gastric damage?",
+    "top_rerank_score": -10.951010704040527,
+    "relevant_passage_ids": [
+      "pubmed_234769"
+    ],
+    "answers": [
+      "By comparison, the level of carcinoembryonic antigen (CEA) was elevated in 14 patients (64%)"
+    ]
+  }
+]
