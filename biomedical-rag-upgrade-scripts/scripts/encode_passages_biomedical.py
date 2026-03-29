@@ -21,28 +21,34 @@ SAVE_EVERY = 50
 DEVICE = "cpu"
 # =========================================
 
+# 1. Setup directories for storing embeddings
 os.makedirs(EMB_DIR, exist_ok=True)
 os.makedirs(PART_DIR, exist_ok=True)
 
+# 2. Load the pre-trained DPR Context Encoder and Tokenizer
 print(f"Loading biomedical encoder: {MODEL_NAME}")
 tokenizer = DPRContextEncoderTokenizer.from_pretrained(MODEL_NAME)
 model = DPRContextEncoder.from_pretrained(MODEL_NAME).to(DEVICE)
 model.eval()
 print("Model loaded")
 
+# 3. Load the JSON passages created in the previous step
 with open(INPUT_FILE, encoding="utf-8") as f:
     passages = json.load(f)
 
+# 4. Prepare the text for encoding (Combine passage text + extracted entities)
 texts = []
 passage_ids = []
 for p in passages:
     entity_suffix = ""
     if p.get("entities"):
         entity_suffix = " Entities: " + ", ".join(p["entities"])
+    # The model works better when we explicitly tell it which entities are present
     texts.append((p["text"] + entity_suffix).strip())
     passage_ids.append(p["passage_id"])
 
 
+# 5. Check for existing progress to allow resuming if the script crashed
 existing_parts = sorted([f for f in os.listdir(PART_DIR) if f.endswith(".npy")])
 start_batch = len(existing_parts) * SAVE_EVERY
 print(f"Resuming from batch {start_batch}")
@@ -51,9 +57,12 @@ batch_embeddings = []
 part_id = len(existing_parts)
 start_time = time.time()
 
+# 6. Run the encoding process in batches
 with torch.inference_mode():
     for i in tqdm(range(start_batch * BATCH_SIZE, len(texts), BATCH_SIZE), desc="Encoding"):
         batch_texts = texts[i:i + BATCH_SIZE]
+        
+        # Tokenize the current batch of texts
         inputs = tokenizer(
             batch_texts,
             padding=True,
@@ -63,10 +72,12 @@ with torch.inference_mode():
         )
         inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
 
+        # Generate vectors (embeddings) using the model
         outputs = model(**inputs)
         emb = outputs.pooler_output.cpu().numpy().astype("float32")
         batch_embeddings.append(emb)
 
+        # Periodically save progress to disk
         batch_idx = (i // BATCH_SIZE) + 1
         if batch_idx % SAVE_EVERY == 0:
             part_id += 1
@@ -76,16 +87,19 @@ with torch.inference_mode():
             elapsed = (time.time() - start_time) / 60
             print(f"Saved part {part_id} | {elapsed:.1f} min elapsed")
 
+# Save any remaining embeddings
 if batch_embeddings:
     part_id += 1
     np.save(f"{PART_DIR}/emb_part_{part_id}.npy", np.vstack(batch_embeddings))
 
 print("All parts encoded")
 
+# 7. Merge all small embedding parts into one single large .npy file
 print("Merging embeddings...")
 parts = sorted([p for p in os.listdir(PART_DIR) if p.endswith(".npy")])
 all_embeddings = np.vstack([np.load(f"{PART_DIR}/{p}") for p in parts]).astype("float32")
 
+# 8. Save the final merged embeddings and the list of passage IDs
 np.save(FINAL_EMB, all_embeddings)
 with open(FINAL_IDS, "w", encoding="utf-8") as f:
     json.dump(passage_ids, f)

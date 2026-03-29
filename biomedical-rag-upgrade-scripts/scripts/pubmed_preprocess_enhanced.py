@@ -40,12 +40,14 @@ BIO_ENTITY_PATTERNS = [
 ]
 
 
+# 1. Clean raw text to remove extra whitespace and special characters
 def clean_text(text: str) -> str:
     text = re.sub(r"\s+", " ", text)
     text = re.sub(r"[^a-zA-Z0-9.,%()\-:; /]", "", text)
     return text.strip()
 
 
+# 2. Download NLTK tokenizer if not already present
 def maybe_download_punkt() -> None:
     if not nltk or not sent_tokenize:
         return
@@ -55,6 +57,7 @@ def maybe_download_punkt() -> None:
         nltk.download("punkt", quiet=True)
 
 
+# 3. Split text into individual sentences
 def split_sentences(text: str) -> List[str]:
     if sent_tokenize:
         try:
@@ -66,6 +69,7 @@ def split_sentences(text: str) -> List[str]:
     return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
 
 
+# 4. Search for specific biomedical terms in text
 def extract_entities(text: str) -> List[str]:
     found = []
     for pattern in BIO_ENTITY_PATTERNS:
@@ -77,6 +81,7 @@ def extract_entities(text: str) -> List[str]:
     return found
 
 
+# 5. Group sentences into fixed-size passages (chunks) with overlap
 def chunk_sentences(sentences: List[str], max_words: int, overlap_sentences: int):
     chunk = []
     chunk_words = 0
@@ -99,6 +104,7 @@ def chunk_sentences(sentences: List[str], max_words: int, overlap_sentences: int
         yield " ".join(chunk)
 
 
+# 6. Download a single .gz file from the PubMed FTP
 def download_file(filename: str, retries: int = 3) -> str:
     path = os.path.join(RAW_DIR, filename)
     for attempt in range(1, retries + 1):
@@ -117,6 +123,7 @@ def download_file(filename: str, retries: int = 3) -> str:
     return path
 
 
+# 7. Extract the .gz file to a raw .xml file
 def extract_gz(gz_path: str, source_filename: str, retries: int = 3) -> str:
     xml_path = gz_path.replace(".gz", "")
     # Rebuild XML if a previous run left an empty/bad file.
@@ -151,6 +158,7 @@ def extract_gz(gz_path: str, source_filename: str, retries: int = 3) -> str:
     return xml_path
 
 
+# 8. Parse the XML file to extract titles, abstracts, and create passages
 def parse_xml(xml_file: str, pid_start: int):
     passages: List[Dict] = []
     pid = pid_start
@@ -193,11 +201,13 @@ def parse_xml(xml_file: str, pid_start: int):
     return passages, pid
 
 
-# ================= PIPELINE =================
+# ================= MAIN PIPELINE =================
+# A. Ensure tokenizer is ready
 maybe_download_punkt()
 passages = []
 pid = 0
 
+# B. Iterate through the target number of PubMed files
 for i in tqdm(range(1, NUM_FILES + 1), desc="PubMed files"):
     fname = f"pubmed{PUBMED_PREFIX}n{i:04d}.xml.gz"
     print(f"Processing {fname}")
@@ -205,8 +215,11 @@ for i in tqdm(range(1, NUM_FILES + 1), desc="PubMed files"):
     file_done = False
     for attempt in range(1, 4):
         try:
+            # Step 1: Download
             gz_path = download_file(fname, retries=3)
+            # Step 2: Unzip
             xml_path = extract_gz(gz_path, fname, retries=3)
+            # Step 3: Parse and Chunk
             new_passages, pid = parse_xml(xml_path, pid)
             passages.extend(new_passages)
             file_done = True
@@ -228,6 +241,7 @@ for i in tqdm(range(1, NUM_FILES + 1), desc="PubMed files"):
     if not file_done:
         continue
 
+# C. Save all processed passages to a single JSON file
 with open(OUT_FILE, "w", encoding="utf-8") as f:
     json.dump(passages, f, indent=2)
 
